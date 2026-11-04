@@ -83,38 +83,25 @@
   ]%
   \newfontfamily\cyrillicfonttt{Courier New}%
 }{%
-  % Если Times New Roman не установлен (обычный Linux), fontconfig не видит
-  % семейство «TeX Gyre Termes», пока файлы не открыты по имени из бандла Tectonic.
-  \setmainfont{texgyretermes}[
-    Extension=.otf,
-    UprightFont=*-regular,
-    BoldFont=*-bold,
-    ItalicFont=*-italic,
-    BoldItalicFont=*-bolditalic,
+  % Liberation Serif метрически совместим с Times New Roman и содержит кириллицу.
+  \setmainfont{Liberation Serif}[
     Ligatures=TeX,
+    BoldFont={Liberation Serif Bold},
+    ItalicFont={Liberation Serif Italic},
+    BoldItalicFont={Liberation Serif Bold Italic},
   ]%
-  \newfontfamily\cyrillicfont{texgyretermes}[
-    Extension=.otf,
-    UprightFont=*-regular,
-    BoldFont=*-bold,
-    ItalicFont=*-italic,
-    BoldItalicFont=*-bolditalic,
+  \newfontfamily\cyrillicfont{Liberation Serif}[
     Ligatures=TeX,
+    BoldFont={Liberation Serif Bold},
+    ItalicFont={Liberation Serif Italic},
+    BoldItalicFont={Liberation Serif Bold Italic},
   ]%
-  \newfontfamily\cyrillicfontsf{texgyretermes}[
-    Extension=.otf,
-    UprightFont=*-regular,
-    BoldFont=*-bold,
-    ItalicFont=*-italic,
-    BoldItalicFont=*-bolditalic,
+  \newfontfamily\cyrillicfontsf{Liberation Serif}[
+    BoldFont={Liberation Serif Bold},
+    ItalicFont={Liberation Serif Italic},
+    BoldItalicFont={Liberation Serif Bold Italic},
   ]%
-  \newfontfamily\cyrillicfonttt{texgyrecursor}[
-    Extension=.otf,
-    UprightFont=*-regular,
-    BoldFont=*-bold,
-    ItalicFont=*-italic,
-    BoldItalicFont=*-bolditalic,
-  ]%
+  \newfontfamily\cyrillicfonttt{Liberation Mono}%
 }
 
 \setlength{\parindent}{0.51cm}
