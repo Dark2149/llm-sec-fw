@@ -3,6 +3,7 @@ name: Build
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   latex:
@@ -53,8 +54,11 @@ jobs:
           EOF
           tectonic -o .ci-fontcheck .ci-fontcheck/fontcheck.tex
 
-      - name: Build template
-        run: mkdir -p build && tectonic -o build article.tex
+      - name: Build article PDF
+        run: |
+          mkdir -p build
+          tectonic -o build article.tex
+          test -s build/article.pdf
 
       - name: Build example
         if: always() && steps.fonts.outcome == 'success'
@@ -66,10 +70,12 @@ jobs:
           tectonic -o build example.tex
 
       - name: Upload article PDF
-        if: always() && steps.fonts.outcome == 'success' && hashFiles('build/article.pdf') != ''
+        if: always() && steps.fonts.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
+          name: article-pdf
           path: build/article.pdf
+          if-no-files-found: error
           archive: false
 
       - name: Upload example PDF
